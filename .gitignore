@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Telegram session files
+*.session
+config.ini
+
 # Distribution / packaging
 .Python
 build/

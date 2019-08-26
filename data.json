@@ -1,0 +1,124 @@
+{
+    "_": "pyrogram.Message",
+    "message_id": 27373,
+    "date": "2019-08-26 18:37:41",
+    "chat": {
+        "_": "pyrogram.Chat",
+        "id": -1001315456439,
+        "type": "supergroup",
+        "is_verified": false,
+        "is_restricted": false,
+        "is_scam": false,
+        "title": "�😐❄�🧛🏽🏽‍♀️",
+        "photo": {
+            "_": "pyrogram.ChatPhoto",
+            "small_file_id": "AQADBQADSary3Bb___83TvYyAAQJBQMAAgI",
+            "big_file_id": "AQADBQADSary3Bb___83TvYyAAQLBQMAAQEC"  
+        },
+        "permissions": {
+            "_": "pyrogram.ChatPermissions",
+            "until_date": "1970-01-01 05:00:00",
+            "can_change_info": false,
+            "can_invite_users": true,
+            "can_pin_messages": true,
+            "can_send_messages": true,
+            "can_send_media_messages": true,
+            "can_send_other_messages": true,
+            "can_add_web_page_previews": true,
+            "can_send_polls": true
+        }
+    },
+    "from_user": {
+        "_": "pyrogram.User",
+        "id": 488976797,
+        "is_self": true,
+        "is_contact": true,
+        "is_mutual_contact": true,
+        "is_deleted": false,
+        "is_bot": false,
+        "is_verified": false,
+        "is_restricted": false,
+        "is_scam": false,
+        "is_support": false,
+        "first_name": "Sam",
+        "last_name": "Ramirez",
+        "status": {
+            "_": "pyrogram.UserStatus",
+            "user_id": 488976797,
+            "online": true,
+            "date": "2019-08-26 18:42:21"
+        },
+        "username": "ArkangelDev",
+        "phone_number": "**********",
+        "photo": {
+            "_": "pyrogram.ChatPhoto",
+            "small_file_id": "AQADBQADnTElHQAENrP5MgAEGr8AAwI",
+            "big_file_id": "AQADBQADnTElHQAENrP5MgAEHL8AAgEC"
+        }
+    },
+    "reply_to_message": {
+        "_": "pyrogram.Message",
+        "message_id": 27372,
+        "date": "2019-08-26 18:29:18",
+        "chat": {
+            "_": "pyrogram.Chat",
+            "id": -1001315456439,
+            "type": "supergroup",
+            "is_verified": false,
+            "is_restricted": false,
+            "is_scam": false,
+            "title": "�😐❄�🧛🏽🏽‍♀️",
+            "photo": {
+                "_": "pyrogram.ChatPhoto",
+                "small_file_id": "AQADBQADSary3Bb___83TvYyAAQJBQMAAgI",
+                "big_file_id": "AQADBQADSary3Bb___83TvYyAAQLBQMAAQEC"
+            },
+            "permissions": {
+                "_": "pyrogram.ChatPermissions",
+                "until_date": "1970-01-01 05:00:00",
+                "can_change_info": false,
+                "can_invite_users": true,
+                "can_pin_messages": true,
+                "can_send_messages": true,
+                "can_send_media_messages": true,
+                "can_send_other_messages": true,
+                "can_add_web_page_previews": true,
+                "can_send_polls": true
+            }
+        },
+        "from_user": {
+            "_": "pyrogram.User",
+            "id": 352665135,
+            "is_self": false,
+            "is_contact": true,
+            "is_mutual_contact": true,
+            "is_deleted": false,
+            "is_bot": false,
+            "is_verified": false,
+            "is_restricted": false,
+            "is_scam": false,
+            "is_support": false,
+            "first_name": "Ice",
+            "last_name": "Bear",
+            "status": {
+                "_": "pyrogram.UserStatus",
+                "user_id": 352665135,
+                "offline": true,
+                "date": "2019-08-26 18:30:25"
+            },
+            "username": "athfan",
+            "phone_number": "**********",
+            "photo": {
+                "_": "pyrogram.ChatPhoto",
+                "small_file_id": "AQADBQADLz4FFQAEyHz5MgAEC2YAAwI",
+                "big_file_id": "AQADBQADLz4FFQAEyHz5MgAEDWYAAgEC"
+            }
+        },
+        "mentioned": false,
+        "text": "// Destination A\n  case 0xA0: // A - A\n    Registers[REGISTER_A] = Registers[REGISTER_A];\n    break;\n  case 0xB0: // A - B\n    Registers[REGISTER_A] = Registers[REGISTER_B];\n    break;\n  case 0xC0: // A - C\n    Registers[REGISTER_A] = Registers[REGISTER_C];\n    break;\n  case 0xD0: // A - L\n    Registers[REGISTER_A] = Registers[REGISTER_L];\n    break;\n  case 0xE0: // A - H\n    Registers[REGISTER_A] = Registers[REGISTER_H];\n    break;",
+        "outgoing": false
+    },
+    "mentioned": false,
+    "text": ".isthis a good meme, shitpost",
+    "outgoing": true
+}
