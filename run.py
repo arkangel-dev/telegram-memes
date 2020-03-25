@@ -7,13 +7,17 @@ from PIL import ImageDraw
 import out
 import os
 import misc
+import uwu
+import memes
 
 
 robomode = False
+uwumode = False
 
 def handleMemes(client, message):
-	print(message)
+	# print(message)
 	global robomode
+	global uwumode
 
 	import os
 
@@ -27,10 +31,22 @@ def handleMemes(client, message):
 
 		reply_message_bool = message["reply_to_message"] # boolean varirable if the user is replying to a message or not
 
+
+
+		if uwumode:
+			data = uwu.convert(message.text)
+			if data:
+				app.edit_message_text(send_to, message.message_id, data)
+
 		if robomode: # this is a consistant module..
 			# the robo mode function will change the users messages from normal messages to a uppercase message with
 			# code markdown
 			app.edit_message_text(send_to, message.message_id, "`" + str(message.text).upper() + "`", parse_mode="markdown")
+
+
+		if first_word == ".uwu":
+			app.delete_messages(send_to, message.message_id)
+			uwumode = not uwumode
 
 		if first_word == ".simply":
 
@@ -71,13 +87,6 @@ def handleMemes(client, message):
 				app.send_photo(send_to, "out.jpg", reply_to_message_id=reply_message)
 			os.remove("out.jpg")
 			
-		elif first_word == ".nrv":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/nervous-guy.jpg")
-			else:
-				app.send_photo(send_to, "templates/nervous-guy.jpg", reply_to_message_id=reply_message)
-
 		elif first_word == ".process":
 			app.delete_messages(send_to, message["message_id"])
 			misc.processing(app, send_to, message.text[9:])
@@ -97,19 +106,26 @@ def handleMemes(client, message):
 				mytext = message.text[7:]
 				language = 'en'
 				myobj = gTTS(text=mytext, lang=language, slow=False) 
-				myobj.save("outvoice.mp3")
+				myobj.save("outvoice.ogg")
 				if not reply_message_bool:
-					app.send_voice(send_to, "outvoice.mp3")
+					app.send_voice(send_to, voice="outvoice.ogg")
 				else:
-					app.send_voice(send_to, "outvoice.mp3", reply_to_message_id=reply_message)
-				os.remove("outvoice.mp3")
+					app.send_voice(send_to, voice="outvoice.ogg", reply_to_message_id=reply_message)
+				os.remove("outvoice.ogg")
 
 		elif first_word == ".iminhell":
 			app.delete_messages(send_to, message["message_id"])
 			if not reply_message_bool:
-				app.send_voice(send_to, "templates/im-in-hell.mp3")
+				app.send_voice(send_to, "templates/im-in-hell.ogg")
 			else:
-				app.send_voice(send_to, "templates/im-in-hell.mp3", reply_to_message_id=reply_message)
+				app.send_voice(send_to, "templates/im-in-hell.ogg", reply_to_message_id=reply_message)
+
+		elif first_word == ".ihateyou":
+			app.delete_messages(send_to, message["message_id"])
+			if not reply_message_bool:
+				app.send_voice(send_to, "templates/i-hate-you-so-much-it-hurts.ogg")
+			else:
+				app.send_voice(send_to, "templates/i-hate-you-so-much-it-hurts.ogg", reply_to_message_id=reply_message)
 
 		elif first_word == ".no":
 			app.delete_messages(send_to, message["message_id"])
@@ -118,62 +134,48 @@ def handleMemes(client, message):
 			else:
 				app.send_voice(send_to, "templates/no-no-noo.mp3", reply_to_message_id=reply_message)
 
-		elif first_word == ".stonks":
+		elif first_word == ".allaroundme":
 			app.delete_messages(send_to, message["message_id"])
 			if not reply_message_bool:
-				app.send_photo(send_to, "templates/stonks.png")
+				app.send_voice(send_to, "templates/all-around-me.mp3")
 			else:
-				app.send_photo(send_to, "templates/stonks.png", reply_to_message_id=reply_message)
+				app.send_voice(send_to, "templates/all-around-me.mp3", reply_to_message_id=reply_message)
+
+		elif first_word == ".stonks":
+			misc.sendSimpleImage(app, send_to, "templates/nervous-guy.jpg", message)
+
+		elif first_word == ".wut":
+			# misc.sendSimpleImage(app, send_to, "templates/alastor-wut.png", message)
+			misc.sendSticker(app, send_to, "CAADBQADnQADnTElHU2Xe-VaqplHFgQ", message)
+
+		elif first_word == ".nrv":
+			misc.sendSimpleImage(app, send_to, "templates/nervous-guy.jpg", message)
 
 		elif first_word == ".entirestock":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/ill-take-your-entire-stock.jpg")
-			else:
-				app.send_photo(send_to, "templates/ill-take-your-entire-stock.jpg", reply_to_message_id=reply_message)
+			misc.sendSimpleImage(app, send_to, "templates/ill-take-your-entire-stock.jpg", message)
 
 		elif first_word == ".noyou":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/no-u.jpg")
-			else:
-				app.send_photo(send_to, "templates/no-u.jpg", reply_to_message_id=reply_message)
+			misc.sendSimpleImage(app, send_to, "templates/no-u.jpg", message)
 
 		elif first_word == ".nouno":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/no-uno.jpg")
-			else:
-				app.send_photo(send_to, "templates/no-uno.jpg", reply_to_message_id=reply_message)
+			misc.sendSimpleImage(app, send_to, "templates/no-uno.jpg", message)
 
 		elif first_word == ".bigbrain":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/big-brain.jpg")
-			else:
-				app.send_photo(send_to, "templates/big-brain.jpg", reply_to_message_id=reply_message)	
+			misc.sendSimpleImage(app, send_to, "templates/big-brain.jpg", message)
 
 		elif first_word == ".detroit2":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/dbh-painting-meme-2.jpg")
-			else:
-				app.send_photo(send_to, "templates/dbh-painting-meme-2.jpg", reply_to_message_id=reply_message)	
+			misc.sendSimpleImage(app, send_to, "templates/dbh-painting-meme-2.jpg", message)
 
 		elif first_word == ".excellentmove":
-			app.delete_messages(send_to, message["message_id"])
-			if not reply_message_bool:
-				app.send_photo(send_to, "templates/excellent-move.png")
-			else:
-				app.send_photo(send_to, "templates/excellent-move.png", reply_to_message_id=reply_message)	
-
+			misc.sendSimpleImage(app, send_to, "templates/excellent-move.png", message)
+		
 		elif first_word == ".detroit":
 			app.delete_messages(send_to, message["message_id"])
 			if reply_message_bool:
 				if message["reply_to_message"]["media"]:
 					from PIL import Image
 					import numpy as np
-					app.download_media(message["reply_to_message"], "in-data.png")
+					app.download_media(message["reply_to_message"], file_name="in-data.png")
 					img = Image.open("templates/dbh-painting-meme.png")
 					background = Image.open("downloads/in-data.png")
 					size = (2560,1600)
@@ -200,7 +202,7 @@ def handleMemes(client, message):
 				if message["reply_to_message"]["media"]:
 					from PIL import Image
 					import numpy as np
-					app.download_media(message["reply_to_message"], "in-data.png")
+					app.download_media(message["reply_to_message"], file_name="in-data.png")
 					img = Image.open("templates/artistmeme.png")
 					background = Image.open("downloads/in-data.png")
 					size = (960,960)
@@ -239,23 +241,6 @@ def handleMemes(client, message):
 			edited_image.save('out.png',"PNG")
 			app.send_photo(send_to, "out.png")
 
-		# elif first_word == ".getyoutube":
-		# 	import youtube_dl
-		# 	message_splitted = message["text"].split()
-		# 	youtube_url = message_splitted[1]
-		# 	print(youtube_url)
-		# 	import youtube_dl
-		# 	ydl_opts = {
-		# 		'format': 'bestaudio/best',
-		# 		'postprocessors': [{
-		# 			'key': 'FFmpegExtractAudio',
-		# 			'preferredcodec': 'mp3',
-		# 			'preferredquality': '192',
-		# 		}],
-		# 	}
-		# 	with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-		# 		ydl.download([youtube_url])
-
 		elif first_word == ".jhonny":
 			import cv2
 			import matplotlib.pyplot as plt
@@ -265,7 +250,7 @@ def handleMemes(client, message):
 			app.delete_messages(send_to, message["message_id"])
 			if reply_message_bool:
 				if message["reply_to_message"]["media"]:
-					app.download_media(message["reply_to_message"], "in-data.png")
+					app.download_media(message["reply_to_message"], file_name="in-data.png")
 					img = cv2.imread('downloads/in-data.png',1)
 					img_pil = im = Image.open(r'downloads/in-data.png')
 					template_image = Image.open(r'templates/heres-jhonny.png')
@@ -298,7 +283,7 @@ def handleMemes(client, message):
 			face_cascade = cv2.CascadeClassifier('cascades/eye.xml')
 			if reply_message_bool:
 				if message["reply_to_message"]["media"]:
-					app.download_media(message["reply_to_message"], "in-data.png")
+					app.download_media(message["reply_to_message"], file_name="in-data.png")
 					img = cv2.imread('downloads/in-data.png',1)
 					gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 					faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -325,7 +310,7 @@ def handleMemes(client, message):
 			face_cascade = cv2.CascadeClassifier('cascades/eye.xml')
 			if reply_message_bool:
 				if message["reply_to_message"]["media"]:
-					app.download_media(message["reply_to_message"], "in-data.png")
+					app.download_media(message["reply_to_message"], file_name="in-data.png")
 					img = cv2.imread('downloads/in-data.png',1)
 					img_pil = Image.open(r'downloads/in-data.png')
 					goog_eye = Image.open(r'templates/googly-eye.png')
@@ -350,7 +335,7 @@ def handleMemes(client, message):
 		
 		elif first_word == ".threaten":
 			app.delete_messages(send_to, message["message_id"])
-			app.send_photo(message["reply_to_message"]["from_user"]["id"], "templates/i-will-kill-you.jpg")	
+			app.send_photo(message["chat"]["id"], "templates/i-will-kill-you.jpg")	
 
 		elif first_word == ".help":
 			import time
@@ -377,10 +362,21 @@ def handleMemes(client, message):
 			time.sleep(5)
 			app.delete_messages(send_to, last_message["message_id"])
 
+		elif first_word == ".skill":
+			app.delete_messages(send_to, message["message_id"])
+			message_parts = message["text"][6:].split(",")
+			if (len(message_parts) == 2):
+				inst = memes.SyrimStatusMeme(message_parts[0], message_parts[1])
+				inst.SaveFile("out.png")
+				app.send_photo(send_to, "out.png")
+
+
+
 		elif first_word == ".isthis":
 			from PIL import Image
 			from PIL import ImageFont
 			from PIL import ImageDraw
+			import time
 
 			message_parts = message["text"][7:].split(",")
 			app.delete_messages(send_to, message["message_id"])
@@ -390,7 +386,8 @@ def handleMemes(client, message):
 					
 					target_id = message["reply_to_message"]["from_user"]["id"]
 					profile_picture = app.get_profile_photos(chat_id=target_id, limit = 1)[0]
-					app.download_media(profile_picture, "downloads\in-data.png")
+					app.download_media(profile_picture, file_name="in-data.png")
+					time.sleep(2)
 
 					meme = Image.open(r'templates/is-this-meme.jpg')
 					profile_picture = Image.open(r'downloads/in-data.png')
@@ -419,6 +416,31 @@ def handleMemes(client, message):
 					meme.save("out.png")
 					app.send_photo(send_to, "out.png")
 
+		elif first_word == ".beta":
+			message_parts = message["text"][6:]
+			app.delete_messages(send_to, message["message_id"])
+
+			from PIL import Image
+			from PIL import ImageFont
+			from PIL import ImageDraw
+			import time
+
+			template = Image.open(r'templates/and-thats-a-fact.png')
+			stringdata = message_parts
+			font = ImageFont.truetype("impact.ttf", 20)
+
+			background_image = Image.new("RGBA", (template.width,template.height), "#FFF")
+
+			draw = ImageDraw.Draw(background_image)
+			text_w, text_h = draw.textsize(stringdata, font)
+
+			splitted_string = stringdata.split()
+
+			draw.text((367 - (text_w / 2), 130), stringdata, (0,0,0), font=font)
+
+			# background_image.paste(template, mask=template)
+			background_image.save("out.png")
+			app.send_photo(send_to, "out.png")
 
 
 app = Client("ArkangelDev")
