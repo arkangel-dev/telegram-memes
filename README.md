@@ -3,7 +3,7 @@
 ## Available Commands
 
 ### `.uwu`
-Translates all messages sent to `UwU` language and edits the messages when activated.
+Translates all messages sent to `UwU` language and edits the messages when activated. Translator source : https://github.com/WahidBawa/UwU-Translator
 ### `.simply`
 
 Sends the *one does not simply walk into Mordor* meme. Send `.simply text` Source : https://knowyourmeme.com/memes/one-does-not-simply-walk-into-mordor
