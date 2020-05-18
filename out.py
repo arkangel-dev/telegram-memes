@@ -12,6 +12,9 @@ def drawTextWithOutline(draw, text, x, y, fsize):
     draw.text((x, y), text, (255,255,255), font=fsize)
     return
 
+def drawText(draw, text, x, y, fsize):
+    draw.text((x, y), text, (255,255,255), font=fsize)
+    return
 
 class memes:
 	def oneDoesNotSimply(text):
@@ -24,6 +27,14 @@ class memes:
 		font = ImageFont.truetype("impact.ttf", 42)
 		w, h = draw.textsize(text, font)
 		drawTextWithOutline(draw,text, img.width/2 - w/2, 280, font)
+		img.save("out.jpg")
+
+	def humanDisaster(text):
+		img = Image.open("templates/human-disaster.png")
+		draw = ImageDraw.Draw(img)
+		font = ImageFont.truetype("impact.ttf", 42)
+		w, h = draw.textsize(text, font)
+		drawText(draw,text, img.width/2 - w/2, 570, font)
 		img.save("out.jpg")
 
 	def historyAliensGuy(text):

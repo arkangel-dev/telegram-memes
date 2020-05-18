@@ -1,9 +1,8 @@
 import subprocess
 from random import randint as rand
 
+
 alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
-
-
 
 def convert(word):
 	ogw = word
@@ -36,30 +35,3 @@ def convert(word):
 	else:
 		return False
 
-# while True: # TURN THIS TO TRUE
-# 	option = int(input("1. String\n2. Text File\nEnter Option here: "))
-# 	if option == 2:
-# 		fName = input("Enter the name of your file (with extension): ")
-# 		text = open("INPUT/" + fName, "r").read().strip().split('\n')
-# 	elif option == 1:
-# 		userInput = input("Enter Text Here: ")
-# 	else:
-# 		print("Please enter in a valid option!!\n\n")
-# 		continue
-# 	break
-
-# if option == 1:
-# 	words = userInput.split(" ")
-# 	for i in words:
-# 		convert(i)
-# else:
-# 	for i in text:
-# 		temp = i.split(" ")
-# 		for n in temp:
-# 			convert(n)
-# 		convertedSentence += "\n"
-# 	UwU = open("OUTPUT/" + fName.split(".")[0] + "_UwU.txt", "w")
-# 	UwU.write(convertedSentence)
-
-# print("\n" + convertedSentence)
-#subprocess.call(["espeak", "" + convertedSentence]) # this is for text to speech, leave commented

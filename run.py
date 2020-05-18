@@ -9,6 +9,10 @@ import os
 import misc
 import uwu
 import memes
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
 
 
 robomode = False
@@ -60,6 +64,12 @@ def handleMemes(client, message):
 				out.memes.oneDoesNotSimply("tell me what to do".upper())
 				app.send_photo(send_to,"out.jpg")
 				os.remove("out.jpg")
+
+		if first_word == ".hd":
+			app.delete_messages(send_to,message["message_id"])
+			out.memes.humanDisaster(message["text"][3:])
+			app.send_photo(send_to,"out.jpg")
+			os.remove("out.jpg")
 
 		# the history aliens meme
 		elif first_word == ".aliens":
@@ -275,10 +285,7 @@ def handleMemes(client, message):
 				app.send_message(send_to, "Reply to a message with an image.")
 		
 		elif first_word == ".recogfaces":
-			import cv2
-			import matplotlib.pyplot as plt
-			import numpy as np
-			from PIL import Image
+
 			app.delete_messages(send_to, message["message_id"])
 			face_cascade = cv2.CascadeClassifier('cascades/eye.xml')
 			if reply_message_bool:
@@ -340,26 +347,42 @@ def handleMemes(client, message):
 		elif first_word == ".help":
 			import time
 			app.delete_messages(send_to, message["message_id"])
-			last_message = app.send_message(send_to,	".simply\n" +
-														".aliens\n" +
-														".toystory\n" +
-														".nrv\n" +
-														".robomode\n" +
-														".speak\n" +
-														".stinks\n" +
-														".noyou\n" +
-														".nouno\n" +
-														".bigbrain\n" +
-														".detroit\n" +
-														".detroit2\n" +
-														".excellentmove\n" +
-														".artist\n" +
-														".ping\n" +
-														".unocolor\n" +
-														".jhonny\n" +
-														".recogfaces\n" +
-														".googly")
-			time.sleep(5)
+			last_message = app.send_message(send_to,	
+							".uwu\n"+
+							".simply\n"+
+							".hd\n"+
+							".aliens\n"+
+							".toystory\n"+
+							".process\n"+
+							".robomode\n"+
+							".speak\n"+
+							".iminhell\n"+
+							".ihateyou\n"+
+							".no\n"+
+							".allaroundme\n"+
+							".stonks\n"+
+							".wut\n"+
+							".nrv\n"+
+							".entirestock\n"+
+							".noyou\n"+
+							".nouno\n"+
+							".bigbrain\n"+
+							".detroit2\n"+
+							".detroit\n"+
+							".excellentmove\n"+
+							".artist\n"+
+							".ping\n"+
+							".unocolor\n"+
+							".jhonny\n"+
+							".recogfaces\n"+
+							".googly\n"+
+							".threaten\n"+
+							".help\n"+
+							".skill\n"+
+							".isthis\n"+
+							".beta\n"
+													)
+			time.sleep(15)
 			app.delete_messages(send_to, last_message["message_id"])
 
 		elif first_word == ".skill":
